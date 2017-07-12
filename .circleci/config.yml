@@ -11,5 +11,5 @@ jobs:
     <<: *container_config
     steps:
       - checkout
-			- run: "echo "DONE"
+      - run: "echo "DONE"
 
