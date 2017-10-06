@@ -5,6 +5,8 @@ jobs:
     docker:
       - image: circleci/node:6
       - image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: test
       - image: elasticsearch:1.4
         command: sleep 5
     working_directory: ~/root
