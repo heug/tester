@@ -4,7 +4,10 @@ references:
   container_config: &container_config
     working_directory: ~/root
     docker:
-      - image: heug/docker-images:fundthatflip
+      - image: circleci/node:6
+      - image: mysql:5.7
+      - image: elasticsearch:1.4
+        command: sleep 5
   
 jobs:
   build:
@@ -12,4 +15,4 @@ jobs:
     steps:
       - checkout
       - run: "echo "DONE"
-
+      
