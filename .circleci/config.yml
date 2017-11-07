@@ -13,10 +13,8 @@ jobs:
     steps:
       - checkout
       - run: echo "DONE"
-      - run: 
-          command: |
-            TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X HEAD -o /dev/null google.com)
-            echo "http.time.total.ghe:${TIME_TOTAL}|ms" | nc -w 1 -u 127.0.0.1 8125
+      - run: echo 'export TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X HEAD -o /dev/null google.com)' >> $BASH_ENV
+      - run: echo "http.time.total.ghe:${TIME_TOTAL}|ms" | nc -w 1 -u 127.0.0.1 8125
       # - run:
       #     command: |
       #       TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X GET -o /dev/null https://jar-splitting-dot-sc-deploy.appspot.com/oauth/deployfrombucket)
