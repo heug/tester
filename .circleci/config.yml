@@ -24,5 +24,5 @@ jobs:
 
 
 
-            TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X HEAD -o /dev/null github.sc-corp.net)
-            echo "http.time.total.ghe:${TIME_TOTAL}|ms" | nc -w 1 -u 127.0.0.1 8125
+            # TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X HEAD -o /dev/null github.sc-corp.net)
+            # echo "http.time.total.ghe:${TIME_TOTAL}|ms" | nc -w 1 -u 127.0.0.1 8125
