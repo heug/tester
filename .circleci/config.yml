@@ -4,12 +4,25 @@ jobs:
   build:
     docker:
       - image: circleci/node:6
-      - image: mysql:5.7
-        environment:
-            MYSQL_ROOT_PASSWORD: test
-      - image: elasticsearch:1.4
-        command: sleep 5
+      # - image: mysql:5.7
+      #   environment:
+      #       MYSQL_ROOT_PASSWORD: test
+      # - image: elasticsearch:1.4
+      #   command: sleep 5
     working_directory: ~/root
     steps:
       - checkout
       - run: echo "DONE"
+      - run: 
+          command: |
+            TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X HEAD -o /dev/null google.com)
+            echo "http.time.total.ghe:${TIME_TOTAL}|ms" | nc -w 1 -u 127.0.0.1 8125
+      # - run:
+      #     command: |
+      #       TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X GET -o /dev/null https://jar-splitting-dot-sc-deploy.appspot.com/oauth/deployfrombucket)
+      #       echo "http.time.total.jarsplit:${TIME_TOTAL}|ms" | nc -w 1 -u 127.0.0.1 8125
+
+
+
+            TIME_TOTAL=$(curl -s -w "%{time_total}\n" -X HEAD -o /dev/null github.sc-corp.net)
+            echo "http.time.total.ghe:${TIME_TOTAL}|ms" | nc -w 1 -u 127.0.0.1 8125
